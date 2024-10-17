@@ -20,7 +20,7 @@ public class Customerhandler {
     private static final String filename = "bank.txt";
 
     public void initialize() throws IOException {
-        List<Customer> customerslist = new ArrayList<Customer>();
+        //List<Customer> customerslist = new ArrayList<Customer>();
         File file = new File(filename); //open file to reading from file
 
         BufferedReader read = new BufferedReader(new FileReader(file));
@@ -89,11 +89,17 @@ public class Customerhandler {
 
             Set keyset =  Bank.customerMap.keySet();
             Iterator iterator = keyset.iterator();
+            Boolean isfirstline = true;
 
             while(iterator.hasNext()){
                 int customerid = (Integer)iterator.next();
                 Customer customer = Bank.customerMap.get(customerid);
-                writer.write(customer.toString());
+                if(isfirstline){
+                    writer.write(customer.toString());
+                    isfirstline = false;
+                }else {
+                    writer.write("\n" + customer.toString());
+                }
             }
 
         } catch (IOException e) {

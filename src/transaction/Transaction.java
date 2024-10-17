@@ -15,9 +15,9 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return  transactionID +
-                 type + '\'' +
-                 amount +
+        return  transactionID +" "+
+                 type + " " +
+                 amount +" "+
                 balance ;
     }
 }
